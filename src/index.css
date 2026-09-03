@@ -6,4 +6,5 @@
   --color-text-muted: #a1a1aa;
   --color-text-accent: #6d5dfc;
   --color-input-bg: oklch(93% 0.034 272.788);
+  --hero-img: url(/hero.png);
 }
