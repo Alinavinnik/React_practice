@@ -6,7 +6,6 @@ const ProductsPagination = () => {
     data,
     isError,
     error,
-    isFetching,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
@@ -29,19 +28,26 @@ const ProductsPagination = () => {
 
   return (
     <div className="flex flex-col justify-center container mx-auto px-6">
-      <ul className="flex flex-wrap gap-6 my-8">
+      <h1 className="text-text-accent text-2xl text-center pt-4 font-bold">
+        Pagination with TanstackQuery- useInfiniteQuery
+      </h1>
+      <ul className="flex flex-wrap gap-6 my-8 ">
         {products.map((product) => (
-          <li className="p-6 border" key={product.id}>
-            <h1>{product.title}</h1>
-            <p>{product.description}</p>
+          <li
+            className="p-6 border border-gray-400 rounded-xl w-[calc((100%-24px)/2)]"
+            key={product.id}
+          >
+            <h1 className="text-xl font-semibold mb-3">{product.title}</h1>
+            <p className="text-[14px] text-gray-700">{product.description}</p>
           </li>
         ))}
       </ul>
       <button
+        className="hover:opacity-[0.85] self-center min-w-40 py-3 px-6  rounded-xl bg-text-accent text-amber-50 text-lg font-medium disabled:opacity-[0.5] disabled:cursor-not-allowed mb-8"
         onClick={() => fetchNextPage()}
         disabled={!hasNextPage || isFetchingNextPage}
       >
-        {isFetching ? <p>Loading...</p> : <p>Load more</p>}
+        {isFetchingNextPage ? "Loading..." : "Load more"}
       </button>
     </div>
   );

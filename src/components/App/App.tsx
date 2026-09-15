@@ -16,8 +16,8 @@ const App = () => {
             <Route path="/" element={<RootLayout />}>
               <Route index element={<Home />} />
               <Route path="accordion" element={<Accordion />} />
+              <Route path="products" element={<ProductsPagination />}></Route>
             </Route>
-            <Route path="products" element={<ProductsPagination />}></Route>
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
