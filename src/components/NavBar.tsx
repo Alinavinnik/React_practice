@@ -15,7 +15,10 @@ const NavBar = () => {
           Home
         </NavLink>
         <NavLink to="/Accordion" end className={getLinkClass}>
-          Accardion
+          Accordion
+        </NavLink>
+        <NavLink to="/products" end className={getLinkClass}>
+          Products
         </NavLink>
       </nav>
     </div>
