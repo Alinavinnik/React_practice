@@ -43,6 +43,12 @@ export default function VideoPlayer() {
     }
   };
 
+  const handleSpeed = (value: number) => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = value;
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <video
@@ -54,6 +60,27 @@ export default function VideoPlayer() {
       >
         <source src="/video.mp4" type="video/mp4" />
       </video>
+      <div className="flex gap-8 ">
+        <button
+          className="px-3 mt-4 cursor-pointer bg-emerald-50"
+          onClick={() => handleSpeed(0.75)}
+        >
+          0.75x
+        </button>
+        <button
+          className="px-3 mt-4 cursor-pointer bg-emerald-50"
+          onClick={() => handleSpeed(1)}
+        >
+          {" "}
+          1x
+        </button>
+        <button
+          className="px-3 mt-4 cursor-pointer bg-emerald-50"
+          onClick={() => handleSpeed(1.25)}
+        >
+          1.25x
+        </button>
+      </div>
       <p>
         Current time: {currentTime} / Total duration:{duration}
       </p>
