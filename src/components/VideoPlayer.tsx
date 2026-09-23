@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { phrases } from "../data";
 
 export default function VideoPlayer() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -48,6 +49,11 @@ export default function VideoPlayer() {
       videoRef.current.playbackRate = value;
     }
   };
+  const handlePhraseClick = (start: number) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = start;
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
@@ -60,6 +66,22 @@ export default function VideoPlayer() {
       >
         <source src="/video.mp4" type="video/mp4" />
       </video>
+      <ul className="flex gap-8">
+        {phrases.map((phrase, i) => {
+          const isActive =
+            currentTime >= phrase.start && currentTime < phrase.end;
+          return (
+            <li key={i}>
+              <button
+                className={isActive ? "text-emerald-600" : "text-black"}
+                onClick={() => handlePhraseClick(phrase.start)}
+              >
+                {phrase.text}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
       <div className="flex gap-8 ">
         <button
           className="px-3 mt-4 cursor-pointer bg-emerald-50"
