@@ -5,6 +5,7 @@ const ProductsPagination = () => {
   const {
     data,
     isError,
+    isLoading,
     error,
     fetchNextPage,
     hasNextPage,
@@ -20,10 +21,13 @@ const ProductsPagination = () => {
 
     initialData: { pages: [], pageParams: [] },
   });
-  const products = data?.pages.flatMap((page) => page.products);
+  const products = data?.pages.flatMap((page) => page.products) ?? [];
 
   if (isError) {
-    return <>Sorry, something went wrong, {error.message}</>;
+    return <p>Sorry, something went wrong, {error.message}</p>;
+  }
+  if (isLoading) {
+    return <p>Loading ...</p>;
   }
 
   return (
