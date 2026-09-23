@@ -5,6 +5,7 @@ const ProductsPagination = () => {
   const {
     data,
     isError,
+    isFetching,
     isLoading,
     error,
     fetchNextPage,
@@ -26,8 +27,8 @@ const ProductsPagination = () => {
   if (isError) {
     return <p>Sorry, something went wrong, {error.message}</p>;
   }
-  if (isLoading) {
-    return <p>Loading ...</p>;
+  if (isLoading || isFetching) {
+    return <p className="text-center ">Loading ...</p>;
   }
 
   return (
