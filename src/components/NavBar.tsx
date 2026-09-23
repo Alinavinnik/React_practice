@@ -20,6 +20,9 @@ const NavBar = () => {
         <NavLink to="/products" end className={getLinkClass}>
           Products
         </NavLink>
+        <NavLink to="/player" end className={getLinkClass}>
+          VideoPlayer
+        </NavLink>
       </nav>
     </div>
   );
