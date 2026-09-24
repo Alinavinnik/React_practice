@@ -20,8 +20,11 @@ const NavBar = () => {
         <NavLink to="/products" end className={getLinkClass}>
           Products
         </NavLink>
-        <NavLink to="/player" end className={getLinkClass}>
+        <NavLink to="/video" end className={getLinkClass}>
           VideoPlayer
+        </NavLink>
+        <NavLink to="/audio" end className={getLinkClass}>
+          AudioPlayer
         </NavLink>
       </nav>
     </div>
