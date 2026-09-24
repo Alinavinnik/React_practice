@@ -5,7 +5,7 @@ export default function VideoPlayer() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-
+  const [isError, setIsError] = useState(false);
   const handlePlay = () => videoRef.current?.play();
   const handleStop = () => videoRef.current?.pause();
 
@@ -54,6 +54,9 @@ export default function VideoPlayer() {
       videoRef.current.currentTime = start;
     }
   };
+  const handleError = () => {
+    setIsError(true);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
@@ -63,6 +66,7 @@ export default function VideoPlayer() {
         onTimeUpdate={handleUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
+        onError={handleError}
       >
         <source src="/video.mp4" type="video/mp4" />
       </video>
@@ -103,6 +107,7 @@ export default function VideoPlayer() {
           1.25x
         </button>
       </div>
+      {isError && <p>Не вдалося завантажити відео</p>}
       <p>
         Current time: {currentTime} / Total duration:{duration}
       </p>
