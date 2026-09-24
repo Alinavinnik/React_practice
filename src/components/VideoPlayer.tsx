@@ -69,6 +69,12 @@ export default function VideoPlayer() {
         onError={handleError}
       >
         <source src="/video.mp4" type="video/mp4" />
+        <track
+          src="/subtitles.vtt"
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
       </video>
       <ul className="flex gap-8">
         {phrases.map((phrase, i) => {
